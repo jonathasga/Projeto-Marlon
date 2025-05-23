@@ -1,0 +1,59 @@
+<html lang="pt-br">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="cadastro.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class ='container'>
+    <div class='card'>
+        <h1>Cadastrar</h1>
+
+        <div id='msgerro'></div>
+        <div id='msgok'></div>
+        
+        <div class='label-float'> 
+            <input type='text' id='nome' paceholder='' required>
+            <label id= "labelnome" for='nome'>Nome Completo</label>
+        </div>
+
+        <div class='label-float'> 
+            <input type='text' id='email' paceholder='' required>
+            <label id= "labelemail" for='email'>Email</label>
+        </div>
+
+        <div class='label-float'> 
+            <input type='text' inputmode="numeric" id='cpf' paceholder='' required>
+            <label id= "labelcpf" for='cpf'>CPF</label>
+        </div>
+
+        <div class='label-float'> 
+            <input type='date' id='data' paceholder='' required>
+            <label id= "labeldata" for='data'> </label>
+        </div>
+
+        <div class='label-float'> 
+            <input type='password' id='senha' paceholder='' required>
+            <label id= "labelsenha" for='senha'>Senha</label>
+            <i id='versenha' class="fa fa-eye" aria-hidden="true"></i>
+        </div>
+
+        <div class='label-float'> 
+            <input type='password' id='confirmsenha' paceholder='' required>
+            <label id= "labelconfirmsenha" for='confirmsenha'>Confirmar senha</label>
+            <i id='verconfirmsenha' class="fa fa-eye" aria-hidden="true"></i>
+        </div>
+
+        <div class='justify-center'>
+            <button onclick='cadastrar()'>Cadastrar</button>
+        </div>
+
+        
+    </div>
+</div> 
+<script src="cadastro.js"></script>
+</body>
+</html>
