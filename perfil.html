@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Perfil</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="perfil.css" />
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="top-buttons">
+                <div class="left-buttons">
+                    <button id="btnVoltar">Voltar</button>
+                </div>
+                <div class="right-buttons">
+                    <button id="btnEditar">Editar</button>
+                    <button id="btnSalvar" style="display:none;">Salvar</button>
+                </div>
+            </div>
+
+            <h1>Meu Perfil</h1>
+
+            <div id='msgsuceso'></div>
+            
+            <div class="campo">
+                <label for="nome">Nome</label>
+                <input type="text" id="nome" readonly />
+            </div>
+
+            <div class="campo">
+                <label for="email">Email</label>
+                <input type="email" id="email" readonly />
+            </div>
+
+            <div class="campo">
+                <label for="senha">Senha</label>
+                <div class="input-senha">
+                    <input type="password" id="senha" readonly />
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="perfil.js"></script>
+</body>
+</html>

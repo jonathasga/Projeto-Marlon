@@ -20,7 +20,8 @@ function entrar() {
 
     let listauser = JSON.parse(localStorage.getItem('listauser')) || []
 
-    let uservalid = {
+     let uservalid = {
+        nomecad: '',
         email: '',
         senha: ''
     }
@@ -28,6 +29,7 @@ function entrar() {
     listauser.forEach((item) => {
         if (email.value == item.emailcad && senha.value == item.senhacad) {
             uservalid = {
+                nomecad: item.nomecad,  // pega o nome do cadastro
                 email: item.emailcad,
                 senha: item.senhacad
             }
@@ -35,7 +37,7 @@ function entrar() {
     })
 
     if (email.value == uservalid.email && senha.value == uservalid.senha) {
-        window.location.href = '' //colocar aqui a pagina home
+        window.location.href = 'perfil.html' //colocar aqui a pagina home
 
         let token = Math.random().toString(16).substring(2) + Math.random().toString(16).substring(2)
         localStorage.setItem('token', token)
