@@ -1,34 +1,53 @@
 let btn = document.querySelector('.fa-eye')
-btn.addEventListener('click', ()=>{
+btn.addEventListener('click', () => {
     let inputsenha = document.querySelector('#senha')
 
-    if(inputsenha.getAttribute('type') == 'password'){
+    if (inputsenha.getAttribute('type') == 'password') {
         inputsenha.setAttribute('type', 'text')
     } else {
         inputsenha.setAttribute('type', 'password')
     }
 })
 
-function entrar(){
+function entrar() {
     let email = document.querySelector('#email')
-    let emaillabel = document.querySelector('#labelemail')
+    let emaillabel = document.querySelector('#emaillabel')
 
     let senha = document.querySelector('#senha')
-    let senhalabel = document.querySelector('#labelsenha')
+    let senhalabel = document.querySelector('#senhalabel')
 
     let msgerro = document.querySelector('#msgerro')
 
-    let listauser = []
+    let listauser = JSON.parse(localStorage.getItem('listauser')) || []
 
     let uservalid = {
-        email: ' ',
-        senha: ' ',
+        email: '',
+        senha: ''
     }
-    listauser = JSON.parse(localStorage.getItem('listauser'))
-    
-    listauser.foreach((item) => {
-        if(email.value == item.emailcad && senha.value == item.senhacad){
-            uservalid
+
+    listauser.forEach((item) => {
+        if (email.value == item.emailcad && senha.value == item.senhacad) {
+            uservalid = {
+                email: item.emailcad,
+                senha: item.senhacad
+            }
         }
     })
+
+    if (email.value == uservalid.email && senha.value == uservalid.senha) {
+        window.location.href = '' //colocar aqui a pagina home
+
+        let token = Math.random().toString(16).substring(2) + Math.random().toString(16).substring(2)
+        localStorage.setItem('token', token)
+        localStorage.setItem('userlogado', JSON.stringify(uservalid)) //é o que vai fazer aparecer o nome na proxima pagina
+    } else {
+        emaillabel.setAttribute('style', 'color: red')
+        email.setAttribute('style', 'border-color: red')
+        senhalabel.setAttribute('style', 'color: red')
+        senha.setAttribute('style', 'border-color: red')
+        msgerro.setAttribute('style', 'display: block')
+        msgerro.innerHTML = 'Usuário ou senha incorretos'
+        btn.setAttribute('style', 'color: red')
+        email.focus()
+    }
 }
