@@ -6,7 +6,7 @@ const tabelaUsuarios = document.querySelector('#tabelaUsuarios');
 let listauser = [];
 
 btnVoltar.addEventListener('click', () => {
-   window.location.href = 'login.html' //colocar aqui a pagina home
+   window.location.href = 'index.html' //colocar aqui a pagina home
 });
 
 function carregarUsuarios(modoEdicao = false) {

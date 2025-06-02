@@ -86,7 +86,7 @@ btnSalvar.addEventListener('click', () => {
 });
 
 btnVoltar.addEventListener('click', () => {
-    window.location.href = 'login.html' //colocar aqui a pagina home
+    window.location.href = 'index.html' //colocar aqui a pagina home
 });
 
 
