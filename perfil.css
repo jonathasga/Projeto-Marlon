@@ -1,0 +1,128 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto", sans-serif;
+}
+
+body {
+    background-image: url("https://wallpaper.forfun.com/fetch/7f/7f19ab0a16ce6bbb2f027343ec2d8c32.jpeg?w=1470&r=0.5625");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 100px;
+}
+
+.card {
+    background-color: #ffffffcc;
+    padding: 30px;
+    border-radius: 4%;
+    box-shadow: 3px 3px 1px 0px #00000060;
+    width: 320px;
+    position: relative;
+}
+
+.top-buttons {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+button {
+    background-color: transparent;
+    border: 2px solid #111497;
+    color: #111497;
+    padding: 7px 14px;
+    font-weight: bold;
+    font-size: 12pt;
+    border-radius: 4px;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background-color: #050730;
+    color: #fff;
+}
+
+h1 {
+    margin-bottom: 20px;
+    color: #111497;
+    text-align: center;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 10px 0;
+}
+
+.campo label {
+    color: #111497;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.campo input {
+    width: 100%;
+    padding: 8px;
+    border: none;
+    border-bottom: 2px solid #111497;
+    background-color: transparent;
+    color: #555;
+    font-size: 16px;
+    cursor: default;
+}
+
+.input-senha {
+    position: relative;
+    width: 100%;
+}
+
+.input-senha input {
+    width: 100%;
+    padding-right: 30px;
+    cursor: default;
+}
+
+.fa-eye {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    color: #111497;
+}
+
+.top-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.left-buttons,
+.right-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.campo input.editavel {
+    color: #111497;
+}
+
+#msgsuceso{
+     text-align: center;
+    color: green;
+    background-color: rgb(190, 255, 190);
+    padding: 10px;
+    border-radius: 4px;
+    display: none;
+}

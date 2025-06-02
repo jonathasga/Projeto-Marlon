@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Usuários Cadastrados</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="usuarios.css" />
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="top-buttons">
+                <button id="btnVoltar">Voltar</button>
+                <button id="btnEditarUsuarios">Habilitar Edição</button>
+                <button id="btnSalvarUsuarios" style="display:none;">Salvar Alterações</button>
+            </div>
+
+            <h1>Usuários Cadastrados</h1>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Email</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="tabelaUsuarios">
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="usuarios.js"></script>
+</body>
+</html>
