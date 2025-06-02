@@ -17,7 +17,7 @@ body {
 /* Sidebar */
 .sidebar {
   width: 250px;
-  background: #1e2538;
+  background-color: #1e253880;
   padding: 20px 15px;
   box-shadow: 2px 0 8px rgba(0,0,0,0.5);
   display: flex;
@@ -133,7 +133,7 @@ button {
 .main {
   flex-grow: 1;
   padding: 25px 30px;
-  background: #171c2f;
+  background-color: #171c2f80;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
@@ -316,4 +316,37 @@ ul li {
   width: 120px;
   height: 120px; 
   
+}
+/* já incluído anteriormente */
+.top-buttons {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  gap: 12px;
+  z-index: 1000;
+}
+
+.top-buttons a {
+  background-color: #3b43a1;
+  color: #e0e0e0;
+  padding: 10px 12px;
+  border-radius: 50%;
+  font-size: 22px;
+  text-decoration: none;
+  box-shadow: 0 4px 8px rgba(59, 67, 161, 0.5);
+  transition: background-color 0.3s ease;
+}
+
+.top-buttons a:hover {
+  background-color: #60a5fa;
+  color: #121829;
+}
+
+body {
+    background-image: url("https://wallpaper.forfun.com/fetch/7f/7f19ab0a16ce6bbb2f027343ec2d8c32.jpeg?w=1470&r=0.5625");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+
 }
