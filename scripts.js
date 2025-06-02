@@ -1,126 +1,112 @@
-const listas = ["Playlist", "Rock", "Pop", "Jazz", "Disco"];
-
+let listas = JSON.parse(localStorage.getItem("listas")) 
 let playlistToDelete = null;
 
 document.addEventListener("DOMContentLoaded", () => {
   atualizarListas();
 
   const toggleBtn = document.querySelector(".sidebar-toggle");
-  if (toggleBtn) {
-    toggleBtn.addEventListener("click", toggleSidebar);
-  }
+  if (toggleBtn) toggleBtn.addEventListener("click", toggleSidebar);
 
-  const confirmBtn = document.getElementById('confirmDeleteBtn');
-  const cancelBtn = document.getElementById('cancelDeleteBtn');
+  // Modal criação de playlist
+  const abrirModal = document.getElementById("abrir-modal-criar");
+  const fecharModal = document.getElementById("fechar-modal-criar");
+  const modal = document.getElementById("modal-criar");
+  const input = document.getElementById("input-nome-playlist");
+  const criarBtn = document.getElementById("criar-playlist");
 
-  if (confirmBtn) {
-    confirmBtn.addEventListener('click', () => {
-      if (playlistToDelete && typeof playlistToDelete.callback === 'function') {
-        playlistToDelete.callback();
-      }
-      closeDeleteModal();
-    });
-  }
+  abrirModal.addEventListener("click", () => {
+    modal.classList.remove("hidden");
+    input.value = "";
+    input.focus();
+  });
 
-  if (cancelBtn) {
-    cancelBtn.addEventListener('click', closeDeleteModal);
-  }
+  fecharModal.addEventListener("click", () => {
+    modal.classList.add("hidden");
+  });
+
+  criarBtn.addEventListener("click", () => {
+    const nome = input.value.trim();
+    if (nome && !listas.includes(nome)) {
+      listas.push(nome);
+      atualizarListas();
+      modal.classList.add("hidden");
+    }
+  });
 });
 
 function atualizarListas() {
+  localStorage.setItem("listas", JSON.stringify(listas));
+
   const lateral = document.getElementById("listas-lateral");
   const central = document.getElementById("listas-centrais");
-  const principal = document.getElementById("listasContainer");
 
   if (lateral) lateral.innerHTML = "";
   if (central) central.innerHTML = "";
-  if (principal) principal.innerHTML = "";
 
   listas.forEach((nome, index) => {
-    const itemLateral = criarElementoLista(nome, index);
-    const cardCentral = criarElementoCard(nome, index);
-    const itemPrincipal = criarElementoPrincipal(nome, index);
+    const itemLateral = document.createElement("div");
+    itemLateral.className = "lista";
+    itemLateral.innerHTML = `<span>${nome}</span>`;
+    itemLateral.addEventListener("click", () => abrirModal(nome, index));
+    lateral.appendChild(itemLateral);
 
-    if (lateral) lateral.appendChild(itemLateral);
-    if (central) central.appendChild(cardCentral);
-    if (principal) principal.appendChild(itemPrincipal);
+    const card = document.createElement("div");
+    card.className = "card";
+    card.innerHTML = `<span>${nome}</span>`;
+    card.addEventListener("click", () => abrirModal(nome, index));
+    central.appendChild(card);
   });
 }
 
-function criarElementoLista(nome, index) {
-  const div = document.createElement("div");
-  div.className = "lista";
-  div.innerHTML = `<span>${nome}</span>`;
-  div.onclick = () => abrirModalPorNome(nome);
-  return div;
-}
-
-function criarElementoCard(nome, index) {
-  const card = document.createElement("div");
-  card.className = "card";
-  card.innerHTML = `<span>${nome}</span>`;
-  card.onclick = () => abrirModalPorNome(nome);
-  return card;
-}
-
-function criarElementoPrincipal(nome, index) {
-  const div = document.createElement("div");
-  div.className = "lista";
-  div.textContent = nome;
-  div.onclick = () => abrirModalPorNome(nome);
-  return div;
-}
-
-function abrirModalPorNome(nomeLista) {
-  const index = listas.findIndex(nome => nome === nomeLista);
+function abrirModal(nomeLista, index) {
   const modal = document.createElement("div");
   modal.className = "modal";
-  modal.innerHTML = `
-    <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-      <span class="close-btn" role="button" tabindex="0" aria-label="Fechar modal">&times;</span>
-      <h2 contenteditable="true" id="modal-nome" tabindex="0">${nomeLista} ✏️</h2>
-      <ul>
-        <li>🎵 Música 1</li>
-        <li>🎵 Música 2</li>
-        <li>🎵 Música 3</li>
-      </ul>
-      <button class="save-btn">Salvar Nome</button>
-      <button class="delete-btn" style="margin-top: 15px;">Excluir Lista</button>
-    </div>
-  `;
-  document.body.appendChild(modal);
 
-  // Fechar modal
-  modal.querySelector(".close-btn").onclick = () => modal.remove();
+  const conteudo = document.createElement("div");
+  conteudo.className = "modal-content";
 
-  // Salvar nome da lista
-  modal.querySelector(".save-btn").onclick = () => {
-    const novoNome = modal.querySelector("#modal-nome").innerText.replace("✏️", "").trim();
-    if (novoNome && index !== -1 && novoNome !== listas[index]) {
+  const fechar = document.createElement("span");
+  fechar.className = "close-btn";
+  fechar.textContent = "×";
+  fechar.addEventListener("click", () => modal.remove());
+
+  const titulo = document.createElement("h2");
+  titulo.id = "modal-nome";
+  titulo.contentEditable = "true";
+  titulo.textContent = `${nomeLista} ✏️`;
+
+  const lista = document.createElement("ul");
+  ["Música 1", "Música 2", "Música 3"].forEach(musica => {
+    const li = document.createElement("li");
+    li.textContent = `🎵 ${musica}`;
+    lista.appendChild(li);
+  });
+
+  const salvar = document.createElement("button");
+  salvar.className = "save-btn";
+  salvar.textContent = "Salvar Nome";
+  salvar.addEventListener("click", () => {
+    const novoNome = titulo.textContent.replace("✏️", "").trim();
+    if (novoNome && novoNome !== listas[index]) {
       listas[index] = novoNome;
       atualizarListas();
     }
     modal.remove();
-  };
+  });
 
-  // Excluir com confirmação
-  modal.querySelector(".delete-btn").onclick = () => {
-    openDeleteModal(nomeLista, () => {
-      if (index !== -1) {
-        listas.splice(index, 1);
-        atualizarListas();
-      }
-    });
-    modal.remove();
-  };
-}
-
-function criarLista() {
-  const nomeNova = prompt("Nome da nova lista:");
-  if (nomeNova) {
-    listas.push(nomeNova);
+  const excluir = document.createElement("button");
+  excluir.className = "delete-btn";
+  excluir.style.marginTop = "15px";
+  excluir.textContent = "Excluir Lista";
+  excluir.addEventListener("click", () => {
+    listas.splice(index, 1);
     atualizarListas();
-  }
+    modal.remove();
+  });
+
+  conteudo.append(fechar, titulo, lista, salvar, excluir);
+  modal.appendChild(conteudo);
+  document.body.appendChild(modal);
 }
 
 function toggleSidebar() {
@@ -131,21 +117,4 @@ function toggleSidebar() {
   if (toggleBtn) {
     toggleBtn.innerHTML = body.classList.contains("sidebar-hidden") ? "❯" : "❮";
   }
-}
-
-function openDeleteModal(playlistName, callback) {
-  const confirmModal = document.getElementById('confirmDeleteModal');
-  const deleteMsg = document.getElementById('deleteMessage');
-  if (!confirmModal || !deleteMsg) return;
-
-};
-{
-  
-}
-
-
-function closeDeleteModal() {
-  const confirmModal = document.getElementById('confirmDeleteModal');
-  if (confirmModal) confirmModal.classList.add('hidden');
-  playlistToDelete = null;
 }

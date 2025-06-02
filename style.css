@@ -350,3 +350,34 @@ body {
     background-attachment: fixed;
 
 }
+
+.hidden {
+  display: none !important;
+}
+
+#modal-criar input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  margin: 20px 0;
+  font-size: 1rem;
+}
+
+#modal-criar button {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #60a5fa;
+  color: #121829;
+  font-weight: bold;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#modal-criar button:hover {
+  background-color: #3b6ac9;
+  color: #f1f5f9;
+}
