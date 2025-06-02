@@ -191,7 +191,7 @@ function cadastrar(){
         msgerro.innerHTML = ''
 
         setTimeout(() => {
-            window.location.href = 'index.html' //depois mudar para o link certo
+            window.location.href = 'login.html' //depois mudar para o link certo
         }, 2000);
 
         
