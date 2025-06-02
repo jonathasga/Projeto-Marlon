@@ -1,0 +1,319 @@
+/* Reset básico */
+* {
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #121829;
+  color: #e0e0e0;
+  display: flex;
+  min-height: 100vh;
+  transition: background-color 0.3s ease;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 250px;
+  background: #1e2538;
+  padding: 20px 15px;
+  box-shadow: 2px 0 8px rgba(0,0,0,0.5);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  transition: transform 0.3s ease;
+}
+body.sidebar-hidden .sidebar {
+  transform: translateX(-260px);
+}
+.sidebar h2 {
+  font-weight: 700;
+  font-size: 1.6rem;
+  color: #60a5fa;
+  margin-bottom: 10px;
+  text-align: center;
+}
+.sidebar > button {
+  margin-top: 10px;
+  padding: 10px 0;
+  border: none;
+  background-color: #60a5fa;
+  color: #121829;
+  font-weight: 700;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 3px 7px rgba(96, 165, 250, 0.6);
+  transition: background-color 0.3s ease;
+}
+.sidebar > button:hover {
+  background-color: #3b6ac9;
+  color: #f1f5f9;
+}
+.sidebar-toggle {
+  position: fixed;
+  top: 20px;
+  left: 250px;
+  z-index: 1000;
+  background-color: #3b43a1;
+  color: #e0e0e0;
+  border: none;
+  border-radius: 6px;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 700;
+  box-shadow: 0 4px 10px rgba(59, 67, 161, 0.7);
+  transition: left 0.3s ease, background-color 0.3s ease;
+}
+.sidebar-toggle:hover {
+  background-color: #60a5fa;
+  color: #121829;
+}
+body.sidebar-hidden .sidebar-toggle {
+  left: 10px;
+}
+
+.listas {
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+/* Botões padrão */
+button {
+  background-color: #238636;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-family: inherit;
+  transition: background-color 0.3s ease;
+}
+
+/* Botões na TopBar */
+.buttons {
+  display: flex;
+  gap: 15px;
+}
+.buttons button {
+  background-color: #3b43a1;
+  color: #e0e0e0;
+  padding: 8px 16px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(59, 67, 161, 0.5);
+}
+.buttons button:hover {
+  background-color: #60a5fa;
+  color: #121829;
+}
+
+/* Botões excluir */
+.excluir-btn {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  background-color: transparent;
+  border: none;
+  color: #888;
+  font-size: 16px;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.2s ease;
+}
+.excluir-btn:hover {
+  opacity: 1;
+  color: #d33;
+}
+
+/* Main */
+.main {
+  flex-grow: 1;
+  padding: 25px 30px;
+  background: #171c2f;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  min-height: 100vh;
+  transition: margin-left 0.3s ease;
+}
+body.sidebar-hidden .main {
+  margin-left: 0;
+}
+body:not(.sidebar-hidden) .main {
+  margin-left: 250px;
+}
+
+/* Top Bar */
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+/* Search */
+.search-bar {
+  padding: 8px 14px;
+  border-radius: 12px;
+  border: none;
+  width: 220px;
+  font-size: 1rem;
+  text-align: center;
+  background-color: #2a3050;
+  color: #e0e0e0;
+  box-shadow: inset 2px 2px 5px rgba(0,0,0,0.4);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+.search-bar::placeholder {
+  color: #9ca3af;
+}
+.search-bar:focus {
+  outline: none;
+  background-color: #3b43a1;
+  color: #f1f5f9;
+  box-shadow: 0 0 8px #60a5fa;
+}
+
+/* Cards & Listas */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(5, 160px);
+  gap: 60px;
+  justify-content: center;
+  margin-top: 200px;
+}
+
+.lista, .card {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  background: #2a3050;
+  border: 1px solid #cccccc;
+  border-radius: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  text-align: center;
+  color: #cbd5e1;
+  font-weight: 600;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.3s, transform 0.2s ease, border-color 0.3s ease;
+}
+.lista span, .card span {
+  font-weight: 600;
+  font-size: 35px;
+  user-select: text;
+  display: block;
+  text-align: center;
+}
+.lista:hover, .card:hover {
+  background-color: #238636;
+  border-color: #2ea043;
+  color: white;
+  transform: scale(1.05);
+}
+
+/* Seções */
+.section h3 {
+  color: #60a5fa;
+  font-weight: 700;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  top: 0; left: 0;
+  right: 0; bottom: 0;
+  background: rgba(18, 24, 41, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  backdrop-filter: blur(6px);
+}
+.modal-content {
+  background: #1e2538;
+  padding: 25px 30px;
+  border-radius: 20px;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  color: #e0e0e0;
+  box-shadow: 0 8px 20px rgba(96, 165, 250, 0.7);
+  position: relative;
+}
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 28px;
+  font-weight: 700;
+  cursor: pointer;
+  color: #ef4444;
+  transition: color 0.3s ease;
+}
+.close-btn:hover {
+  color: #f87171;
+}
+#modal-nome {
+  border-bottom: 2px solid #60a5fa;
+  padding: 6px 8px;
+  width: 100%;
+  font-size: 1.3rem;
+  font-weight: 700;
+  background: transparent;
+  color: #60a5fa;
+  margin-bottom: 20px;
+  text-align: center;
+}
+ul {
+  list-style: none;
+  margin-bottom: 25px;
+  text-align: left;
+}
+ul li {
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+  color: #a0aec0;
+}
+.save-btn {
+  padding: 12px 25px;
+  cursor: pointer;
+  background-color: #60a5fa;
+  color: #121829;
+  border: none;
+  border-radius: 14px;
+  font-weight: 700;
+  box-shadow: 0 6px 14px rgba(96, 165, 250, 0.8);
+  transition: background-color 0.3s ease;
+}
+.save-btn:hover {
+  background-color: #3b6ac9;
+  color: #f1f5f9;
+}
+/* Reduz fonte das listas da barra lateral */
+.sidebar .listas {
+  display: flex;
+  flex-direction: column;
+  align-items: center;  /* Centraliza os quadrados horizontalmente */
+  gap: 15px;            /* Espaço vertical entre os quadrados */
+  margin-top: 20px;
+}
+
+.sidebar .lista span {
+  font-size: 20px;
+}
+.sidebar .lista {
+  width: 120px;
+  height: 120px; 
+  
+}

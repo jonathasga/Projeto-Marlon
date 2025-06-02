@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LesuFY</title>
+
+  <!-- Corrigido: nome do CSS estava errado -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Fontes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+  <!-- Botão para esconder/mostrar sidebar -->
+  <button class="sidebar-toggle">❮</button>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h2>Sua Biblioteca</h2>
+    <div class="listas" id="listas-lateral"></div>
+    <button onclick="criarLista()">+ Criar Lista</button>
+  </div>
+
+  <!-- Conteúdo Principal -->
+  <div class="main">
+    <div class="cards" id="listas-centrais"></div>
+  </div>
+
+
+  <!-- Scripts -->
+  <script src="scripts.js"></script>
+</body>
+</html>

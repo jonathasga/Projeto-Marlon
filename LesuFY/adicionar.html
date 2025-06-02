@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Adicionar Música</title>
+  <style>
+    body {
+      background-color: #041b52;
+      color: white;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    form {
+      background-color: #002f6c;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      width: 100%;
+      max-width: 400px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    label {
+      font-size: 0.9rem;
+    }
+
+    input, select {
+      padding: 10px;
+      border-radius: 10px;
+      border: none;
+      font-size: 1rem;
+    }
+
+    button {
+      background-color: white;
+      color: #002f6c;
+      padding: 10px;
+      border: none;
+      border-radius: 12px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #d1e4ff;
+    }
+
+    a {
+      margin-top: 20px;
+      color: #b0c4de;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <h1>Criar Lista</h1>
+  <form id="form-musica">
+    <label for="nome">Nome da Música:</label>
+    <input type="text" id="nome" name="nome" required />
+
+    <label for="artista">Artista:</label>
+    <input type="text" id="artista" name="artista" required />
+
+    <label for="estilo">Estilo Musical:</label>
+    <select id="estilo" name="estilo" required>
+      <option value="">Selecione</option>
+      <option value="Pop">Pop</option>
+      <option value="Rock">Rock</option>
+      <option value="Jazz">Jazz</option>
+      <option value="Disco">Disco</option>
+      <option value="Eletrônica">Eletrônica</option>
+    </select>
+
+    <button type="submit">Adicionar</button>
+  </form>
+
+  <a href="index.html">← Voltar para a Página Inicial</a>
+
+  <script>
+    document.getElementById('form-musica').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const nome = document.getElementById('nome').value;
+      const artista = document.getElementById('artista').value;
+      const estilo = document.getElementById('estilo').value;
+
+      alert(`Música adicionada:\nNome: ${nome}\nArtista: ${artista}\nEstilo: ${estilo}`);
+      
+      this.reset();
+    });
+  </script>
+</body>
+</html>
