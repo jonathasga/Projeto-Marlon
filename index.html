@@ -11,29 +11,24 @@
 </head>
 <body>
 
-  <!-- Botão para esconder/mostrar sidebar -->
   <button class="sidebar-toggle">❮</button>
 
-  <!-- Botões de topo -->
   <div class="top-buttons">
     <a href="perfil.html" class="perfil-btn" title="Perfil do Usuário">👤</a>
     <a href="usuarios.html" class="usuarios-btn" title="Usuários Cadastrados">👥</a>
     <a href="login.html" class="logout-btn" title="Sair / Logout">❌</a>
   </div>
 
-  <!-- Sidebar -->
   <div class="sidebar">
     <h2>Sua Biblioteca</h2>
     <button id="abrir-modal-criar">+ Criar Lista</button>
     <div class="listas" id="listas-lateral"></div>
   </div>
 
-  <!-- Conteúdo principal -->
   <div class="main">
     <div class="cards" id="listas-centrais"></div>
   </div>
 
-  <!-- Modal de criação -->
   <div id="modal-criar" class="modal hidden">
     <div class="modal-content">
       <span class="close-btn" id="fechar-modal-criar">×</span>

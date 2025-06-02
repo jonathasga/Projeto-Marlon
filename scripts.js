@@ -7,7 +7,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const toggleBtn = document.querySelector(".sidebar-toggle");
   if (toggleBtn) toggleBtn.addEventListener("click", toggleSidebar);
 
-  // Modal de criação de playlist
   const abrirModalCriarEl = document.getElementById("abrir-modal-criar");
   const fecharModalCriarEl = document.getElementById("fechar-modal-criar");
   const modalCriarEl = document.getElementById("modal-criar");
@@ -36,15 +35,12 @@ document.addEventListener("DOMContentLoaded", () => {
         const nome = inputNomePlaylistEl.value.trim();
         if (nome && !listas.includes(nome)) {
           listas.push(nome);
-          // Inicializa a lista de músicas para a nova playlist
-          playlistMusicas[nome] = []; 
+          playlistMusicas[nome] = [];
           localStorage.setItem("playlistMusicas", JSON.stringify(playlistMusicas));
           atualizarListas();
           if (modalCriarEl) modalCriarEl.classList.add("hidden");
         } else if (listas.includes(nome)) {
-          alert("Uma playlist com este nome já existe.");
         } else if (!nome) {
-          alert("Por favor, insira um nome para a playlist.");
         }
       }
     });
@@ -53,7 +49,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function atualizarListas() {
   localStorage.setItem("listas", JSON.stringify(listas));
-  // playlistMusicas é salvo quando modificado (criação, adição/remoção de músicas, renomeação)
 
   const lateral = document.getElementById("listas-lateral");
   const central = document.getElementById("listas-centrais");
@@ -62,19 +57,17 @@ function atualizarListas() {
   if (central) central.innerHTML = "";
 
   listas.forEach((nome, index) => {
-    // Item da Sidebar
     if (lateral) {
       const itemLateral = document.createElement("div");
-      itemLateral.className = "lista"; // Classe para estilo do card na sidebar
+      itemLateral.className = "lista";
       itemLateral.innerHTML = `<span>${nome}</span>`;
       itemLateral.addEventListener("click", () => abrirModalDetalhesPlaylist(nome, index));
       lateral.appendChild(itemLateral);
     }
 
-    // Card Central
     if (central) {
       const card = document.createElement("div");
-      card.className = "card"; // Classe para estilo do card no conteúdo principal
+      card.className = "card";
       card.innerHTML = `<span>${nome}</span>`;
       card.addEventListener("click", () => abrirModalDetalhesPlaylist(nome, index));
       central.appendChild(card);
@@ -83,12 +76,11 @@ function atualizarListas() {
 }
 
 function abrirModalDetalhesPlaylist(nomeLista, index) {
-  // Remover modal existente, se houver, para evitar duplicatas
   const modalExistente = document.querySelector(".modal-detalhes-playlist");
   if (modalExistente) modalExistente.remove();
 
   const modal = document.createElement("div");
-  modal.className = "modal modal-detalhes-playlist"; // Adicionada classe específica
+  modal.className = "modal modal-detalhes-playlist";
 
   const conteudo = document.createElement("div");
   conteudo.className = "modal-content";
@@ -99,12 +91,11 @@ function abrirModalDetalhesPlaylist(nomeLista, index) {
   fechar.addEventListener("click", () => modal.remove());
 
   const titulo = document.createElement("h2");
-  titulo.id = "modal-nome"; // Usado no seu CSS
+  titulo.id = "modal-nome";
   titulo.contentEditable = "true";
-  titulo.textContent = nomeLista; // Emoji será adicionado após para não interferir na edição
+  titulo.textContent = nomeLista;
 
   const listaUl = document.createElement("ul");
-
   const musicasDaPlaylistAtual = playlistMusicas[nomeLista] || [];
 
   if (musicasDaPlaylistAtual.length === 0) {
@@ -118,7 +109,6 @@ function abrirModalDetalhesPlaylist(nomeLista, index) {
     musicasDaPlaylistAtual.forEach(musica => {
       const li = document.createElement("li");
       li.textContent = `🎵 ${musica.title} - ${musica.artist.name}`;
-      // Poderia adicionar um botão de remover música da playlist aqui também
       listaUl.appendChild(li);
     });
   }
@@ -130,26 +120,23 @@ function abrirModalDetalhesPlaylist(nomeLista, index) {
     const novoNome = titulo.textContent.replace("✏️", "").trim();
     if (novoNome && novoNome !== listas[index]) {
       if (listas.includes(novoNome)) {
-        alert("Uma playlist com este novo nome já existe!");
-        titulo.textContent = listas[index]; // Reverte para o nome original
+        titulo.textContent = listas[index];
         titulo.innerHTML += " <span style='font-size: 0.8em; cursor: default;'>✏️</span>";
         return;
       }
-      // Renomear em playlistMusicas
       if (playlistMusicas.hasOwnProperty(listas[index])) {
         playlistMusicas[novoNome] = playlistMusicas[listas[index]];
         delete playlistMusicas[listas[index]];
         localStorage.setItem("playlistMusicas", JSON.stringify(playlistMusicas));
       }
       listas[index] = novoNome;
-      atualizarListas(); // Re-renderiza as listas com o novo nome
-      modal.remove(); // Fecha o modal após salvar
+      atualizarListas();
+      modal.remove();
     } else if (novoNome === listas[index]) {
-      modal.remove(); // Se o nome não mudou, apenas fecha
+      modal.remove();
     } else if (!novoNome) {
-        alert("O nome da playlist não pode ser vazio.");
-        titulo.textContent = listas[index]; // Reverte
-        titulo.innerHTML += " <span style='font-size: 0.8em; cursor: default;'>✏️</span>";
+      titulo.textContent = listas[index];
+      titulo.innerHTML += " <span style='font-size: 0.8em; cursor: default;'>✏️</span>";
     }
   });
 
@@ -158,35 +145,32 @@ function abrirModalDetalhesPlaylist(nomeLista, index) {
   adicionarMusicasBtn.textContent = "Adicionar Músicas";
   adicionarMusicasBtn.style.marginTop = "15px";
   adicionarMusicasBtn.addEventListener("click", () => {
-    window.location.href = `pesquisa.html?playlist=${encodeURIComponent(listas[index])}`; // Usa o nome atual da lista
+    window.location.href = `pesquisa.html?playlist=${encodeURIComponent(listas[index])}`;
     modal.remove();
   });
 
   const excluirListaBtn = document.createElement("button");
-  excluirListaBtn.className = "delete-btn"; // Use uma classe genérica ou crie .delete-btn no CSS
+  excluirListaBtn.className = "delete-btn";
   excluirListaBtn.textContent = "Excluir Lista";
   excluirListaBtn.style.backgroundColor = "#ef4444";
   excluirListaBtn.style.color = "white";
-  excluirListaBtn.style.marginTop = "15px"; // Ou adicione ao CSS
+  excluirListaBtn.style.marginTop = "15px";
   excluirListaBtn.addEventListener("click", () => {
-    if (confirm(`Tem certeza que deseja excluir a playlist "${listas[index]}"? Esta ação não pode ser desfeita.`)) {
-      if (playlistMusicas.hasOwnProperty(listas[index])) {
-        delete playlistMusicas[listas[index]];
-        localStorage.setItem("playlistMusicas", JSON.stringify(playlistMusicas));
-      }
-      listas.splice(index, 1);
-      atualizarListas();
-      modal.remove();
+    if (playlistMusicas.hasOwnProperty(listas[index])) {
+      delete playlistMusicas[listas[index]];
+      localStorage.setItem("playlistMusicas", JSON.stringify(playlistMusicas));
     }
+    listas.splice(index, 1);
+    atualizarListas();
+    modal.remove();
   });
 
   conteudo.append(fechar, titulo, listaUl, salvarNomeBtn, adicionarMusicasBtn, excluirListaBtn);
   modal.appendChild(conteudo);
   document.body.appendChild(modal);
-  
-  // Adicionar emoji de edição após definir o texto e os event listeners
+
   titulo.innerHTML += " <span style='font-size: 0.8em; cursor: default;'>✏️</span>";
-  titulo.focus(); // Foca no título para edição
+  titulo.focus();
 }
 
 function toggleSidebar() {

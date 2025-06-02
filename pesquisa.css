@@ -28,7 +28,6 @@ main {
   width: 100%;
 }
 
-/* PLAYLIST E RESULTADOS */
 .playlist, .contener {
   flex: 1;
   min-width: 300px;
@@ -54,7 +53,6 @@ main {
   box-sizing: border-box;
 }
 
-/* INPUT DE BUSCA */
 #busca {
   padding: 10px;
   border: none;
@@ -68,7 +66,6 @@ main {
   left: 51%;
 }
 
-/* Foco do input */
 #busca:focus {
   outline: none;
   background-color: #7c7c7e98;
@@ -76,7 +73,6 @@ main {
   transition: 0.15s;
 }
 
-/* BOTÕES */
 button {
   background-color: #126da5;
   color: white;
@@ -99,7 +95,6 @@ button:hover {
   background-color: red;
 }
 
-/* CARDS DE MÚSICAS */
 .track {
   display: flex;
   align-items: center;
@@ -127,8 +122,6 @@ button:hover {
   margin-top: 8px;
 }
 
-
-/* RESPONSIVIDADE */
 @media (max-width: 768px) {
   main {
     flex-direction: column;
