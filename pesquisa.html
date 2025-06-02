@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Buscador de Músicas - Listfy</title>
+  <link rel="stylesheet" href="pesquisa.css">  
+</head>
+<body>
+  <main>
+    
+  <div class="playlist">
+    <h2>Sua Playlist:</h2>
+    <div id="playlist"></div>
+  </div>
+
+    
+      <input type="text" id="busca" placeholder="O que você deseja ouvir?" onkeyup="debouncedBuscarMusicas()" />
+    
+    
+    <div class="contener">
+      <div class="results">
+        <div id="resultado"></div>
+      </div>
+  </main>
+
+  <script src="pesquisa.js"></script>
+
+</body>
+</html>

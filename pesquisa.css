@@ -1,0 +1,157 @@
+/* ESTILO GERAL */
+@import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@200..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Oxanium:wght@200..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Oxanium:wght@200..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+*{
+  font-family: "Oxanium", sans-serif;
+}
+body {  
+  background-color: #011846;
+  color: white;
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+main {
+  font-family: "Roboto", sans-serif;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+
+/* PLAYLIST E RESULTADOS */
+.playlist, .contener {
+  flex: 1;
+  min-width: 300px;
+  max-width: 500px;
+}
+
+.playlist {
+  margin-top: 30px;
+}
+
+#playlist {
+  width: 100%;
+}
+
+.results {
+  margin-top: 30px;
+}
+
+.contener {
+  background-color: #524f4fa0;
+  border-radius: 10px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* INPUT DE BUSCA */
+#busca {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  margin-top: 10px;
+  width: 37%;
+  transition: 0.2s;
+  background-color: white;
+  color: black;
+  position: absolute;
+  left: 51%;
+}
+
+/* Foco do input */
+#busca:focus {
+  outline: none;
+  background-color: #7c7c7e98;
+  color: white;
+  transition: 0.15s;
+}
+
+/* BOTÕES */
+button {
+  background-color: #126da5;
+  color: white;
+  cursor: pointer;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+button:hover {
+    border: 0.5px solid white;
+}
+
+.bnt {
+  background-color: #014666;
+}
+
+.remove-btn {
+  background-color: red;
+}
+
+/* CARDS DE MÚSICAS */
+.track {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background-color: #2d3b55;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 15px;
+  animation: fadeSlideIn 0.4s ease-in-out;
+}
+
+.album-cover {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.track-info {
+  flex: 1;
+  color: #fff;
+}
+
+.track-buttons {
+  margin-top: 8px;
+}
+
+
+/* RESPONSIVIDADE */
+@media (max-width: 768px) {
+  main {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .contener,
+  .playlist {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  #busca {
+    width: 50%;
+    margin: 10px auto;
+    position: static;
+  }
+
+  button {
+    margin-left: 0;
+  }
+}
+
+.playlist.hidden {
+  display: none;
+}
