@@ -1,0 +1,98 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto", sans-serif;
+}
+
+body {
+    background-image: url("https://wallpaper.forfun.com/fetch/7f/7f19ab0a16ce6bbb2f027343ec2d8c32.jpeg?w=1470&r=0.5625");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 100px;
+}
+
+.card {
+    background-color: #ffffffcc;
+    padding: 30px;
+    border-radius: 4%;
+    box-shadow: 3px 3px 1px 0px #00000060;
+    width: 500px;
+    position: relative;
+}
+
+.top-buttons {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+button {
+    background-color: transparent;
+    border: 2px solid #111497;
+    color: #111497;
+    padding: 7px 14px;
+    font-weight: bold;
+    font-size: 12pt;
+    border-radius: 4px;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background-color: #050730;
+    color: #fff;
+}
+
+h1 {
+    margin-bottom: 20px;
+    color: #111497;
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    border-bottom: 1px solid #111497;
+    text-align: left;
+    color: #111497;
+}
+
+th {
+    background-color: #111497;
+    color: white;
+    font-weight: bold;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+td[contenteditable="true"] {
+    background-color: #fff3cd; 
+}
+
+.btnExcluir {
+    background-color: transparent;
+    color: #c0392b;
+    border: none;
+    font-size: 14pt;
+    cursor: pointer;
+    padding: 0 6px;
+}
+
+.btnExcluir:hover {
+    color: #e74c3c;
+}
