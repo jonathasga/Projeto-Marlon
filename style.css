@@ -214,8 +214,8 @@ body:not(.sidebar-hidden) .main {
   text-align: center;
 }
 .lista:hover, .card:hover {
-  background-color: #238636;
-  border-color: #2ea043;
+  background-color: #39baec;
+  border-color: #39baec;
   color: white;
   transform: scale(1.05);
 }
@@ -380,4 +380,19 @@ body {
 #modal-criar button:hover {
   background-color: #3b6ac9;
   color: #f1f5f9;
+}
+.adicionar-btn {
+  padding: 10px 16px;
+  margin: 8px 5px 0;
+  border: none;
+  border-radius: 10px;
+  background-color: #2563eb;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.adicionar-btn:hover {
+  background-color: #1d4ed8;
 }
