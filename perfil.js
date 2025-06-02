@@ -9,7 +9,7 @@ const inputs = [
     document.querySelector('#senha')
 ];
 
-// Carrega dados do userlogado
+
 function carregarDados() {
     const userLogado = JSON.parse(localStorage.getItem('userlogado'));
 
@@ -20,10 +20,10 @@ function carregarDados() {
     }
 }
 
-// deixa os textos somente leitura
+
 function inicializar() {
     inputs.forEach(input => input.setAttribute('readonly', true));
-    inputs[2].type = 'password'; // senha sempre escondida
+    inputs[2].type = 'password'; 
     btnSalvar.style.display = 'none';
     btnEditar.style.display = 'inline-block';
     btnVoltar.style.display = 'inline-block';
@@ -32,10 +32,10 @@ function inicializar() {
 btnEditar.addEventListener('click', () => {
     inputs.forEach(input => {
         input.removeAttribute('readonly');
-        input.classList.add('editavel'); // adiciona a classe com cor "editavel"
+        input.classList.add('editavel'); 
     });
     inputs[0].focus()
-    inputs[2].type = 'text'; // mostra a senha pra editar
+    inputs[2].type = 'text'; 
     btnSalvar.style.display = 'inline-block';
     btnEditar.style.display = 'none';
     btnVoltar.style.display = 'none';
@@ -70,23 +70,23 @@ btnSalvar.addEventListener('click', () => {
 
         inputs.forEach(input => input.setAttribute('readonly', true));
         inputs.forEach(input => input.classList.remove('editavel'));
-        inputs[2].type = 'password'; // senha fica escondida dnv
+        inputs[2].type = 'password';
         btnSalvar.style.display = 'none';
         btnEditar.style.display = 'inline-block';
         btnVoltar.style.display = 'inline-block';
 
-        msgsuceso.innerHTML = 'Dados atualizados com sucesso!' //mensagem que aparece se for salvo
+        msgsuceso.innerHTML = 'Dados atualizados com sucesso!' 
         msgsuceso.style.display = 'block';
         setTimeout(() => {
     msgsuceso.style.display = 'none';
-}, 5000); //mudar tempo se quiser mas ta 5 segundos
+}, 5000); 
     } else {
         alert('Erro: Usuário não encontrado na lista.');
     }
 });
 
 btnVoltar.addEventListener('click', () => {
-    window.history.back();
+    window.location.href = 'login.html' //colocar aqui a pagina home
 });
 
 

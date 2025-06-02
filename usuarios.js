@@ -6,7 +6,7 @@ const tabelaUsuarios = document.querySelector('#tabelaUsuarios');
 let listauser = [];
 
 btnVoltar.addEventListener('click', () => {
-    window.history.back();
+   window.location.href = 'login.html' //colocar aqui a pagina home
 });
 
 function carregarUsuarios(modoEdicao = false) {
@@ -47,7 +47,7 @@ function carregarUsuarios(modoEdicao = false) {
            btnExcluir.addEventListener('click', () => {
     listauser.splice(index, 1);
     localStorage.setItem('listauser', JSON.stringify(listauser));
-    carregarUsuarios(true); // recarrega mantendo modo edição
+    carregarUsuarios(true); 
 });
 
             tdAcoes.appendChild(btnExcluir);
@@ -61,7 +61,7 @@ function carregarUsuarios(modoEdicao = false) {
 btnEditarUsuarios.addEventListener('click', () => {
     btnSalvarUsuarios.style.display = 'inline-block';
     btnEditarUsuarios.style.display = 'none';
-    carregarUsuarios(true); // ativa modo edição
+    carregarUsuarios(true); 
 });
 
 btnSalvarUsuarios.addEventListener('click', () => {
@@ -89,7 +89,7 @@ btnSalvarUsuarios.addEventListener('click', () => {
     btnSalvarUsuarios.style.display = 'none';
     btnEditarUsuarios.style.display = 'inline-block';
 
-    carregarUsuarios(false); // volta ao modo visualização
+    carregarUsuarios(false); 
 
     alert('Alterações salvas com sucesso!');
 });
